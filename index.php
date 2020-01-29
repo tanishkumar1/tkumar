@@ -17,14 +17,17 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "INSERT INTO login (username, password)
-VALUES ('$email','$pass')";
+    $result1 = mysql_query("SELECT password FROM reg WHERE email = '".$email."'");
+    $result2 = mysql_query("SELECT email FROM reg WHERE password = '".$pass."'");
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+            if($email == $result2 && $pass == $result1) 
+            { 
+                echo "login successful";
+            }
+            else
+            {
+                echo'The username or password are incorrect!';
+            }
 
 $conn->close();
 ?>
