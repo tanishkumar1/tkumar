@@ -17,17 +17,24 @@ if ($conn->connect_error) {
 }
 
 
-    //$result1 = mysql_query($conn,"SELECT password FROM reg WHERE email = '"$email"'");
-   // $result2 = mysql_query($conn,"SELECT email FROM reg WHERE password = '".$pass."'");
+   $select1 = "SELECT password FROM reg WHERE email = '".$email."'";
 
-          //  if($email == $result2 && $pass == $result1) 
-        //    { 
-          //      echo "login successful";
-          //  }
-          //  else
-          //  {
+        $result1=$conn->query($select1);
+        $row1=$result1->fetch_assoc();
+
+        $select2 = "SELECT email FROM reg WHERE password = '".$pass."'";
+
+        $result2=$conn->query($select2);
+        $row2=$result2->fetch_assoc();
+
+           if($email == $row2["email"] && $pass == $row1["password"])  
+             { 
+                echo "login successful";
+            }
+            else
+           {
                 echo'The username or password are incorrect!';
-           // }
+            }
 
 $conn->close();
 ?>
