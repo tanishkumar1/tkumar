@@ -13,7 +13,7 @@ $dbname="dbs";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbname);
-echo "Hello";
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -33,7 +33,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 }else {
-            $_SESSION['error_msg'] = "Database error: Could not register user";
+            echo "Database error: Could not register user";
         }
 
 $conn->close();
