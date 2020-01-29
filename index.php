@@ -1,7 +1,7 @@
 <?php
 $servername = "35.222.71.185";
 $username = "newuser";
-$dbpass = "Tanish@123";
+$password = "Tanish@123";
 $dbname="dbs";
 
   $email = $_POST["username"];
@@ -9,7 +9,7 @@ $dbname="dbs";
 
 
 // Create connection
-$conn = new mysqli($servername, $username, $dbpass,$dbname);
+$conn = new mysqli($servername, $username, $password,$dbname);
 echo "Hello";
 // Check connection
 if ($conn->connect_error) {
