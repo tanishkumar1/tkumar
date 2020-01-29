@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 }
 
 
-$sql = "INSERT INTO reg_1 (email,pass)
+$sql = "INSERT INTO login (username, password)
 VALUES ('$email','$pass')";
 
 if ($conn->query($sql) === TRUE) {
