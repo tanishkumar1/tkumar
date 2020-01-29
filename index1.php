@@ -18,7 +18,11 @@ echo "Hello";
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+$sql = "SELECT * FROM reg WHERE email='$email' LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $errors['email'] = "Email already exists";
+    }
 
 $sql = "INSERT INTO reg (firstname, lastname, email, password, phone)
 VALUES ('$fname','$lname','$email','$pass','$phone')";
