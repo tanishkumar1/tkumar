@@ -23,7 +23,7 @@ $sql = "SELECT * FROM reg WHERE email='$email' LIMIT 1";
     if (mysqli_num_rows($result) > 0) {
         $errors['email'] = "Email already exists";
     }
-
+if (count($errors) === 0) {
 $sql = "INSERT INTO reg (firstname, lastname, email, password, phone)
 VALUES ('$fname','$lname','$email','$pass','$phone')";
 
@@ -32,6 +32,9 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
+}else {
+            $_SESSION['error_msg'] = "Database error: Could not register user";
+        }
 
 $conn->close();
 ?>
