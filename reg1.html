@@ -1,0 +1,200 @@
+<html>
+<head>
+<style>
+#mform{
+background-color:white;
+}
+body{
+background-color:black;
+}
+*{margin-bottom:5px;
+	
+
+}
+a {
+  color: dodgerblue;
+}
+#tb{
+	width:80%;
+    margin:auto;
+}
+#ab{
+  	padding-top:10px;
+    font-size:19px;
+   
+}
+.cd{
+	width:100%;
+    margin-top:25px;
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+  border-radius: 10px;
+    padding: 10px;
+    font-size:19px;
+}
+h1,p{
+	color:#f1f1f1;
+    
+}
+.subbtn{
+	width:20%;
+    background-color: #4CAF50;
+    color: white;
+    cursor:pointer;
+    padding: 16px 20px;
+    margin: 8px 0;
+	border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+
+</style>
+</head>
+
+<body>
+	<h1 style="text-align:center;"><i>Registration Form<i></h1>
+	<p style="text-align:center;">Please fill in this form to create an account.</p>
+	<form name="mf"style="text-align:center;" id="mform" onSubmit="return validate()"action="http://35.222.71.185/tkumar/index1.php"method="OST" >
+		<table id="tb">
+			<tr>
+				<th id="ab">First Name</th>
+				<td>
+					<input class="cd" type="text" name="fname"placeholder="Enter First Name..."required>
+				</td>
+			</tr>
+
+			<tr>
+				<th id="ab">Last Name</th>
+				<td>
+					<input class="cd" type="text" name="lname"placeholder="Enter Last Name..."required>
+				</td>
+			</tr>
+			<tr>
+				<th id="ab">Gender</th>
+				<td>
+					<input type="radio" name="gender" value="male"checked> Male   
+					<input type="radio" name="gender" value="female"> Female
+				</td>
+			</tr>
+			<tr>
+				<th id="ab">Date of Birth</th>
+				<td>
+					<input class="cd" type="date"name="dob"required>
+				</td>
+			</tr>
+			<tr>
+				<th id="ab">Email</th>
+				<td>
+					<input class="cd" type="text"placeholder="Enter Email..."name="em"required>
+				</td>
+	
+			<tr>
+				<th id="ab">Password</th>
+				<td>
+					<input class="cd" class='p1'type="password"placeholder="Enter Password..." name="pass1"required>
+				</td>
+			</tr>
+			<tr>
+				<th id="ab">Confirm Password</th>
+				<td>
+					<input class="cd" class='p2'type="password"placeholder="Re Enter Password..."name="pass2"required>
+				</td>
+			</tr>
+
+			<tr>
+				<th id="ab">Phone No.</th>
+				<td>
+					<input class="cd"type="text" name="phone" placeholder="Enter Phone Number..."required>
+				</td>
+			</tr>
+			<tr>
+				<th id="ab">Country</th>
+				<td>
+					<select class="cd"name="country" required>
+						<option value ="select">Select Country</option>
+						<option value="India">India</option>
+						<option value="Australia">Australia</option>
+						<option value="England" >England</option>
+						<option value="Pakistan">Pakistan</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th id="ab">Profile Pic:</th>
+				<td>
+					<input class="cd"type="file" name="myFile" >
+				</td>
+			</tr>
+
+		</table>
+		<a style="text-align:center;" target="_blank"href="file:///C:/Users/ggn.guest/Desktop/web/try.html">Terms and Condition</a><br>
+		<button style="text-align:center;"type="Submit"  class="subbtn">Submit</button>
+
+	</form>
+	<p style="text-align:center;">Already have a account?    <a target="_blank"href="file:///C:/Users/ggn.guest/Desktop/web/try2.html">  Sign in</a></p>
+	<script>
+		function validate()
+		{
+			var email=document.mf.em.value;
+			var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            
+            if (reg.test(email) == false) 
+            {
+				document.mf.em.style.borderColor="red";
+                
+                return (false);
+            }
+			else
+			{
+				document.mf.em.style.borderColor="#ccc";
+			}
+			var p1=document.mf.pass1.value;
+			var p2=document.mf.pass2.value;
+			if(p1!=p2)
+			{  
+				document.mf.pass1.style.borderColor="red";
+				document.mf.pass2.style.borderColor="red";
+				return false;  
+			}
+			else
+			{
+				document.mf.pass1.style.borderColor="#ccc";
+				document.mf.pass2.style.borderColor="#ccc";
+			}
+			var phn=document.mf.phone.value;
+			var p=/^[6-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/;
+			if (p.test(phn) == false) 
+            {
+                document.mf.phone.style.borderColor="red";
+                return (false);
+            }
+			else
+			{
+				document.mf.phone.style.borderColor="#ccc";
+			}
+			var fname=document.mf.fname.value;
+			var lname=document.mf.lname.value;
+			var em=document.mf.em.value;
+			var pass1=document.mf.pass1.value;
+			var pass2=document.mf.pass2.value;
+			var phone=document.mf.phone.value;
+			var country=document.mf.country.value;
+			var dob=document.mf.dob.value;
+			$.ajax({
+			type: 'POST',
+			async: false,
+			data:{fname,lname,em,pass1,pass2,phone,country,dob},
+			success: function(response){
+			console.log(response);
+			},
+			error: function(error){
+			console.log(error);
+			}
+			});
+		}
+		
+
+	</script>
+
+</body>
+</html>
