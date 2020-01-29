@@ -17,8 +17,8 @@ if ($conn->connect_error) {
 }
 
 
-    $result1 = mysql_query("SELECT password FROM reg WHERE email = '".$email."'");
-    $result2 = mysql_query("SELECT email FROM reg WHERE password = '".$pass."'");
+    $result1 = mysql_query($conn,"SELECT password FROM reg WHERE email = '"$email"'");
+    $result2 = mysql_query($conn,"SELECT email FROM reg WHERE password = '".$pass."'");
 
             if($email == $result2 && $pass == $result1) 
             { 
