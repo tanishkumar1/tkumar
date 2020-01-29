@@ -33,7 +33,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 }else {
-            echo "Database error: Could not register user";
+            echo "Database error: Email already exist";
         }
 
 $conn->close();
