@@ -10,7 +10,7 @@ $dbname="dbs";
 
 // Create connection
 $conn = new mysqli($servername, $username, $dbpass,$dbname);
-
+echo "Hello";
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
